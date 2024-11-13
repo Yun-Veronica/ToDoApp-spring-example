@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная</title>
+    <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+<body>
+<div class="container">
+    <!-- Display the logged-in user's name -->
+    <h3 th:text="${#authentication.name}">Username</h3>
+
+    <!-- Show login and registration links if the user is not authenticated -->
+    <div th:if="${#authentication.principal == null}">
+        <h4><a href="/login">Войти</a></h4>
+        <h4><a href="/registration">Зарегистрироваться</a></h4>
+    </div>
+
+    <!-- Show logout link if the user is authenticated -->
+    <div th:if="${#authentication.principal != null}">
+        <h4><a href="/logout">Выйти</a></h4>
+    </div>
+
+    <!-- Links for news (user) and admin section -->
+    <h4><a href="/news">Новости (только пользователь)</a></h4>
+    <h4><a href="/admin">Пользователи (только админ)</a></h4>
+</div>
+</body>
+</html>

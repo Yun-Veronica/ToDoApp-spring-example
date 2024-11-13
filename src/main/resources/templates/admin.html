@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+<body>
+<div class="container">
+    <h2>Users List</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>UserName</th>
+            <th>Password</th>
+            <th>Roles</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over all users -->
+        <tr th:each="user : ${allUsers}">
+            <td th:text="${user.id}"></td>
+            <td th:text="${user.username}"></td>
+            <td th:text="${user.password}"></td>
+            <td>
+                <!-- Iterate over roles of each user -->
+                <span th:each="role : ${user.roles}" th:text="${role.name}">Role</span>
+                <!-- Add semicolon after each role -->
+                <span th:each="role : ${user.roles}" th:text="${role.name} + '; '"></span>
+            </td>
+            <td>
+                <!-- Form to delete a user -->
+                <form th:action="@{/admin}" method="post">
+                    <input type="hidden" name="userId" th:value="${user.id}"/>
+                    <input type="hidden" name="action" value="delete"/>
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <a href="/" class="btn btn-primary">Главная</a>
+</div>
+</body>
+</html>
