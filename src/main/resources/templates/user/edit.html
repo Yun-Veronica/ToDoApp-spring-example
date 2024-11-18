@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/profile/edit" method="post" enctype="multipart/form-data" th:object="${user}">
+    <input type="text" th:field="*{username}" placeholder="Username" required />
+    <input type="email" th:field="*{email}" placeholder="Email" required />
+    <input type="file" th:field="*{profilePhoto}" />
+    <button type="submit">Update Profile</button>
+</form>
+
+</body>
+</html>

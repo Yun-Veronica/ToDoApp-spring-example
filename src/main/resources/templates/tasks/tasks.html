@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>My Tasks</title>
+    <link rel="stylesheet" href="/resources/css/style.css">
+</head>
+<body>
+<h1>My Tasks</h1>
+
+<!-- Success or Error Message -->
+<div th:if="${message != null}" th:text="${message}" class="alert"></div>
+
+<!-- Add Task Form -->
+<form th:action="@{/templates/tasks}" method="post">
+    <input type="text" name="title" placeholder="Task title" required />
+    <textarea name="description" placeholder="Description"></textarea>
+    <input type="date" name="dueDate" required />
+    <select name="category">
+        <option th:each="category : ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+    </select>
+    <button type="submit">Add Task</button>
+</form>
+
+<!-- Task Search Form -->
+<form th:action="@{/templates/tasks}" method="get">
+    <input type="text" name="search" placeholder="Search tasks" />
+    <button type="submit">Search</button>
+</form>
+
+<!-- Task List -->
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Due Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+    </tr>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.title}"></td>
+        <td th:text="${task.description}"></td>
+        <td th:text="${task.dueDate}"></td>
+        <!-- Display status as a human-readable label -->
+        <td>
+            <span th:text="${task.status == 'PENDING' ? 'Pending' : task.status == 'COMPLETED' ? 'Completed' : 'In Progress'}"></span>
+        </td>
+        <td>
+            <a th:href="@{tasks/edit/{id}(id=${task.id})}">Edit</a>
+            <a th:href="@{tasks/delete/{id}(id=${task.id})}">Delete</a>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
+

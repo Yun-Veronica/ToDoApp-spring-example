@@ -1,6 +1,7 @@
 package org.example.todo.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -18,7 +19,7 @@ public class Tasks {
 
     @Id
     @Column
-    private Integer id;
+    private Long id;
 
     @ManyToOne
     @JoinColumn(name = "users_id")
@@ -28,7 +29,9 @@ public class Tasks {
     @JoinColumn(name = "categories_id")
     private Categories category;
 
+
     @Column
+    @NotEmpty(message = "Title is required")
     private String name;
 
     @Column

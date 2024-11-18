@@ -53,6 +53,9 @@ public class UserService implements UserDetailsService {
         return userRepository.findAll();
     }
 
+    public Users findByUsername(String username) {
+        return userRepository.findByUsername(username); // Fetch the user by their username
+    }
     @Transactional
     public boolean saveUser(Users user) {
         Users userFromDB = userRepository.findByUsername(user.getUsername());

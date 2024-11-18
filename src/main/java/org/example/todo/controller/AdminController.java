@@ -1,16 +1,23 @@
 package org.example.todo.controller;
 
 
+import org.example.todo.model.Tasks;
 import org.example.todo.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class AdminController {
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private TasksService taskService;
 
     @GetMapping("/admin")
     public String userList(Model model) {
@@ -33,4 +40,12 @@ public class AdminController {
         model.addAttribute("allUsers", userService.usergtList(userId));
         return "admin";
     }
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @GetMapping("/admin/tasks")
+    public String listAllTasksForAdmin(Model model) {
+        List<Tasks> tasks = taskService.getAllTasks();
+        model.addAttribute("tasks", tasks);
+        return "admin/tasks";
+    }
+
 }

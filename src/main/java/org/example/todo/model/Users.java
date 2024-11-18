@@ -3,12 +3,13 @@ package org.example.todo.model;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
+
 import lombok.*;
 
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
+import org.springframework.web.multipart.MultipartFile;
 
 
 @Entity
@@ -35,6 +36,10 @@ public class Users implements UserDetails {
 
     @Column
     private String email;
+
+
+    private String profilePicturePath;  // The file path or URL for the profile picture
+
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(

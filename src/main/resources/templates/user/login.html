@@ -1,22 +1,5 @@
-<!--<!DOCTYPE html>-->
-<!--&lt;!&ndash;lets thymeleaf know that it is thymeleaf file&ndash;&gt;-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <title>Login</title>-->
-<!--</head>-->
-<!--<body>-->
-<!--<h1>Login</h1>-->
-<!--<form th:action="@{/login}" method="post">-->
-<!--    <label for="username">Username:</label>-->
-<!--    <input type="text" id="username" name="username" required />-->
-<!--    <label for="password">Password:</label>-->
-<!--    <input type="password" id="password" name="password" required />-->
-<!--    <button type="submit">Login</button>-->
-<!--</form>-->
-<!--</body>-->
-<!--</html>-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,18 +20,27 @@
     <form th:action="@{/login}" method="POST">
         <div>
             <label for="username">Username</label>
-            <input id="username" name="username" type="text" placeholder="Username" autofocus="true" th:value="${username}"/>
+            <input id="username" name="username" type="text" placeholder="Username" autofocus="true" th:value="${username}" required="true"/>
         </div>
         <div>
             <label for="password">Password</label>
-            <input id="password" name="password" type="password" placeholder="Password"/>
+            <input id="password" name="password" type="password" placeholder="Password" required="true"/>
         </div>
+
+        <!-- Error Message for Invalid Login -->
+        <div th:if="${param.error}">
+            <p style="color: red;">Invalid username or password. Please try again.</p>
+        </div>
+
         <button type="submit">Log In</button>
 
         <div>
             <h4><a href="/registration">Зарегистрироваться</a></h4>
         </div>
     </form>
+</div>
+<div th:if="${param.error}">
+    <p style="color: red;">Invalid username or password</p>
 </div>
 </body>
 </html>

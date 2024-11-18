@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,11 +21,15 @@
     <!-- Show logout link if the user is authenticated -->
     <div th:if="${#authentication.principal != null}">
         <h4><a href="/logout">Выйти</a></h4>
-    </div>
 
-    <!-- Links for news (user) and admin section -->
-    <h4><a href="/news">Новости (только пользователь)</a></h4>
-    <h4><a href="/admin">Пользователи (только админ)</a></h4>
+        <!-- Links for news (user) and admin section -->
+        <h4><a href="/news">Новости (только пользователь)</a></h4>
+
+        <!-- Only display this link if the user has 'ROLE_ADMIN' -->
+        <div th:if="${#authentication.authorities.contains('ROLE_ADMIN')}">
+            <h4><a href="/admin">Пользователи (только админ)</a></h4>
+        </div>
+    </div>
 </div>
 </body>
 </html>

@@ -24,28 +24,31 @@ public class WebSecurityConfig {
         return new BCryptPasswordEncoder();
     }
 
-    // SecurityFilterChain bean to configure HTTP security
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf().disable() // Disable CSRF for simplicity (you can enable it if required)
-                .authorizeHttpRequests()
-                    .requestMatchers("/registration").not().fullyAuthenticated()
-                    .requestMatchers("/admin/**").hasRole("ADMIN")
-                    .requestMatchers("/news").hasRole("USER")
-                    .requestMatchers("/", "/resources/**").permitAll()
-                    .anyRequest().authenticated()
+                    .authorizeRequests()
+                    .requestMatchers("/login", "/user/login", "/css/**", "/images/**", "/js/**", "/favicon.ico").permitAll()
+                    .requestMatchers("/tasks/**").authenticated()  // Allow authenticated users to access /tasks/*
+                    .anyRequest().authenticated() // All other requests require authentication
                 .and()
                 .formLogin()
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/")
+                    .loginPage("/user/login")  // Specify your custom login page
+                    .loginProcessingUrl("/login")  // This is the default login URL for Spring Security
+                    .defaultSuccessUrl("/tasks/all", true)  // Redirect after successful login
+                    .failureUrl("/user/login?error=true")  // Redirect on login failure
+                    .permitAll()  // Allow all users to access the login page
+                .and()
+                    .logout()
+                    .logoutUrl("/logout")  // Configure logout URL
+                    .logoutSuccessUrl("/login?logout")  // Redirect after successful logout
                     .permitAll()
                 .and()
-                .logout()
-                    .permitAll()
-                    .logoutSuccessUrl("/");
+                    .csrf().disable();  // Disable CSRF protection (only if necessary)
+
         return http.build();
     }
+
 
     // AuthenticationManager bean configuration
     @Bean
