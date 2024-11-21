@@ -18,7 +18,6 @@
 
         <nav id="nav" class="nav">
             <ul>
-                <li><a href="/">Main</a></li>
                 <li><a href="/profile">Profile</a></li>
                 <li><a href="/tasks/all">Tasks</a></li>
             </ul>
@@ -57,7 +56,7 @@
             <td th:text="${task.creation_date}"></td>
             <td th:text="${task.due_date}"></td>
             <td>
-                <a th:href="@{/tasks/edit/{id}(id=${task.id})}">Edit</a> |
+                <a th:href="@{/tasks/update/{id}(id=${task.id})}">Edit</a> |
                 <a th:href="@{/tasks/delete/{id}(id=${task.id})}" onclick="return confirm('Are you sure?')">Delete</a>
             </td>
         </tr>

@@ -1,145 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <title>Update Task</title>-->
-<!--    <link rel="stylesheet" href="/css/style.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<header>-->
-<!--    <h1>Update Task</h1>-->
-<!--</header>-->
-<!--<div class="menu-container">-->
-<!--    <div class="burger-menu" onclick="toggleMenu()">-->
-<!--        <div class="bar"></div>-->
-<!--        <div class="bar"></div>-->
-<!--        <div class="bar"></div>-->
-<!--    </div>-->
-
-<!--    <nav id="nav" class="nav">-->
-<!--        <ul>-->
-<!--            <li><a href="/">Main</a></li>-->
-<!--            <li><a href="/profile">Profile</a></li>-->
-<!--            <li><a href="/tasks/all">Tasks</a></li>-->
-<!--        </ul>-->
-<!--    </nav>-->
-<!--</div>-->
-<!--<section>-->
-<!--    <form th:action="@{/tasks/update}" method="post">-->
-<!--        <input type="hidden" name="id" th:value="${task.id}">-->
-
-<!--        <label for="name">Task Name:</label>-->
-<!--        <input type="text" id="name" name="name" th:value="${task.name}" required>-->
-
-<!--        <label for="description">Description:</label>-->
-<!--        <textarea id="description" name="description" th:value="${task.task_text}" required></textarea>-->
-
-<!--        <label for="description">Priority:</label>-->
-<!--        <textarea id="priority" name="priority" th:value="${task.priority}" required></textarea>-->
-
-<!--        <label for="description">Creation date:</label>-->
-<!--        <textarea id="creation_date" name="creation_date" th:value="${task.creation_date}" required></textarea>-->
-
-<!--        <label for="description">Due date:</label>-->
-<!--        <textarea id="due_date" name="due_date" th:value="${task.due_date}" required></textarea>-->
-
-
-<!--        <button type="submit">Update Task</button>-->
-<!--    </form>-->
-<!--</section>-->
-<!--</body>-->
-<!--</html>-->
-<!--///// hello -->
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
-<!--<head>-->
-<!--    <meta charset="UTF-8">-->
-<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-<!--    <title>Update Task</title>-->
-<!--    <link rel="stylesheet" href="/css/style.css">-->
-<!--</head>-->
-<!--<body>-->
-<!--<header>-->
-<!--    <h1>Update Task</h1>-->
-<!--</header>-->
-<!--<div class="menu-container">-->
-<!--    <div class="burger-menu" onclick="toggleMenu()">-->
-<!--        <div class="bar"></div>-->
-<!--        <div class="bar"></div>-->
-<!--        <div class="bar"></div>-->
-<!--    </div>-->
-
-<!--    <nav id="nav" class="nav">-->
-<!--        <ul>-->
-<!--            <li><a href="/">Main</a></li>-->
-<!--            <li><a href="/profile">Profile</a></li>-->
-<!--            <li><a href="/tasks/all">Tasks</a></li>-->
-<!--        </ul>-->
-<!--    </nav>-->
-<!--</div>-->
-<!--<hr>-->
-
-<!--<section>-->
-<!--    &lt;!&ndash; Update Task Form &ndash;&gt;-->
-<!--    <form th:action="@{/tasks/update}" th:object="${task}" method="post">-->
-<!--        &lt;!&ndash; Hidden ID Field &ndash;&gt;-->
-<!--        <input type="hidden" th:field="*{id}">-->
-
-<!--        &lt;!&ndash; Task Name &ndash;&gt;-->
-<!--        <div>-->
-<!--            <label for="name">Task Name</label>-->
-<!--            <input type="text" id="name" th:field="*{name}" placeholder="Enter task name" required>-->
-<!--            <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</span>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Task Text &ndash;&gt;-->
-<!--        <div>-->
-<!--            <label for="task_text">Task Description</label>-->
-<!--            <textarea id="task_text" th:field="*{task_text}" placeholder="Enter task description"></textarea>-->
-<!--            <span th:if="${#fields.hasErrors('task_text')}" th:errors="*{task_text}">Task text error</span>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Priority &ndash;&gt;-->
-<!--        <div>-->
-<!--            <label for="priority">Priority</label>-->
-<!--            <select id="priority" th:field="*{priority}">-->
-<!--                <option value="Low" th:selected="${task.priority == 'Low'}">Low</option>-->
-<!--                <option value="Medium" th:selected="${task.priority == 'Medium'}">Medium</option>-->
-<!--                <option value="High" th:selected="${task.priority == 'High'}">High</option>-->
-<!--            </select>-->
-<!--            <span th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}">Priority error</span>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Creation Date &ndash;&gt;-->
-<!--&lt;!&ndash;        <div>&ndash;&gt;-->
-<!--&lt;!&ndash;            <label for="creation_date">Creation Date</label>&ndash;&gt;-->
-<!--&lt;!&ndash;            <input type="date" id="creation_date" th:field="*{creation_date}" readonly>&ndash;&gt;-->
-<!--&lt;!&ndash;            <span th:if="${#fields.hasErrors('creation_date')}" th:errors="*{creation_date}">Creation date error</span>&ndash;&gt;-->
-<!--&lt;!&ndash;        </div>&ndash;&gt;-->
-
-<!--        <div>-->
-<!--            <label for="creation_date">Creation Date</label>-->
-<!--            <input type="date" id="creation_date" th:field="*{creation_date}">-->
-<!--            <span th:if="${#fields.hasErrors('creation_date')}" th:errors="*{creation_date}">Due date error</span>-->
-<!--        </div>-->
-
-
-<!--        &lt;!&ndash; Due Date &ndash;&gt;-->
-<!--        <div>-->
-<!--            <label for="due_date">Due Date</label>-->
-<!--            <input type="date" id="due_date" th:field="*{due_date}">-->
-<!--            <span th:if="${#fields.hasErrors('due_date')}" th:errors="*{due_date}">Due date error</span>-->
-<!--        </div>-->
-
-<!--        &lt;!&ndash; Submit Button &ndash;&gt;-->
-<!--        <div>-->
-<!--            <button type="submit">Update Task</button>-->
-<!--        </div>-->
-<!--    </form>-->
-<!--</section>-->
-<!--</body>-->
-<!--</html>-->
-
-
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -161,7 +19,6 @@
 
     <nav id="nav" class="nav">
         <ul>
-            <li><a href="/">Main</a></li>
             <li><a href="/profile">Profile</a></li>
             <li><a href="/tasks/all">Tasks</a></li>
         </ul>
@@ -170,14 +27,14 @@
 <hr>
 <section>
     <!-- Update Task Form -->
-    <form th:action="@{/tasks/update}" th:object="${task}" method="post">
+    <form th:action="@{/tasks/update/{id}(id=${task.id})}" th:object="${task}" method="post">
         <!-- Hidden ID Field -->
         <input type="hidden" th:field="*{id}">
 
         <!-- Task Name -->
         <div>
             <label for="name">Task Name</label>
-            <input type="text" id="name" th:field="*{name}" placeholder="Enter task name" required>
+            <input type="text" id="name" th:field="*{name}" placeholder="Enter task name" >
             <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</span>
         </div>
 

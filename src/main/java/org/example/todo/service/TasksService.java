@@ -31,6 +31,10 @@ public class TasksService {
     }
 
     public Page<Tasks> getTasksByUser(Users user, Pageable pageable) {
+        if (user == null) {
+            throw new IllegalArgumentException("User cannot be null.");
+        }
+
         return taskRepository.findByUser(user, pageable);
     }
 

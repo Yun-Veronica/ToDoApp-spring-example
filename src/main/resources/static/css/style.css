@@ -1,58 +1,3 @@
-/*!* style.css *!*/
-
-/*body {*/
-/*    font-family: Arial, sans-serif;*/
-/*    background-color: #f4f4f4;*/
-/*    margin: 0;*/
-/*    padding: 0;*/
-/*}*/
-
-/*.container {*/
-/*    width: 80%;*/
-/*    max-width: 1200px;*/
-/*    margin: 0 auto;*/
-/*    padding: 20px;*/
-/*    background-color: #fff;*/
-/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
-/*    border-radius: 8px;*/
-/*    margin-top: 50px;*/
-/*}*/
-
-/*h3 {*/
-/*    font-size: 24px;*/
-/*    color: #333;*/
-/*    margin-bottom: 20px;*/
-/*}*/
-
-/*h4 {*/
-/*    font-size: 18px;*/
-/*    color: #007bff;*/
-/*    margin: 10px 0;*/
-/*}*/
-
-/*h4 a {*/
-/*    text-decoration: none;*/
-/*    color: #007bff;*/
-/*    transition: color 0.3s ease;*/
-/*}*/
-
-/*h4 a:hover {*/
-/*    color: #0056b3;*/
-/*}*/
-
-/*a {*/
-/*    text-decoration: none;*/
-/*    color: inherit;*/
-/*}*/
-
-/*.container h4 {*/
-/*    margin: 10px 0;*/
-/*}*/
-
-/*css for prev files*/
-    /* public/css/style.css */
-
-    /* Basic reset */
 * {
     margin: 0;
     padding: 0;
@@ -63,14 +8,13 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
-    /*background-color: #7f0606;*/
     padding: 20px;
 }
 
 /* Header styles */
 header {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #f4f4f4;
+    color: black;
     padding: 10px 20px;
     text-align: center;
 }

@@ -41,7 +41,8 @@ public class UserProfileController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    @GetMapping
+    //TODO : WORK WITH PROFILE
+    @GetMapping("/{id}")
     public String viewProfile(Authentication authentication, Model model) {
         Users user = (Users) authentication.getPrincipal();
         model.addAttribute("user", user);
