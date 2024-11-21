@@ -87,3 +87,38 @@ public class UserProfileController {
     }
 }
 
+// UserController.java
+//@Controller
+//@RequestMapping("/user")
+//public class UserController {
+//
+//    @Autowired
+//    private UserService userService;
+//
+//    // View user profile
+//    @GetMapping("/profile")
+//    public String viewProfile(Model model, Authentication authentication) {
+//        String username = authentication.getName();
+//        User user = userService.findByUsername(username);
+//        model.addAttribute("user", user);
+//        return "user/profile";
+//    }
+//
+//    // Edit user profile
+//    @GetMapping("/edit")
+//    public String editProfileForm(Model model, Authentication authentication) {
+//        String username = authentication.getName();
+//        User user = userService.findByUsername(username);
+//        model.addAttribute("user", user);
+//        return "user/edit";
+//    }
+//
+//    // Save edited user profile
+//    @PostMapping("/edit")
+//    public String editProfile(@ModelAttribute User user) {
+//        userService.updateUser(user);
+//        return "redirect:/user/profile";
+//    }
+//}
+
+

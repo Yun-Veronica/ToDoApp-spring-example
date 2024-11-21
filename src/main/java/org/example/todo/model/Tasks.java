@@ -19,6 +19,7 @@ public class Tasks {
 
     @Id
     @Column
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne

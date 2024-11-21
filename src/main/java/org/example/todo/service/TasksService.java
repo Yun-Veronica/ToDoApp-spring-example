@@ -31,11 +31,14 @@ public class TasksService {
     }
 
     public Page<Tasks> getTasksByUser(Users user, Pageable pageable) {
-        return taskRepository.findByUser(user, pageable);  // Filter tasks by username
+        return taskRepository.findByUser(user, pageable);
     }
+
     public Page<Tasks> getAllTasks(Pageable pageable) {
-        return taskRepository.findAll(pageable);  // Return all tasks for admin
+        return taskRepository.findAll(pageable);
     }
+
+    @Transactional
     public Tasks saveTask(Tasks task) {
         if (task.getDue_date() != null && task.getDue_date().isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("Due date cannot be in the past.");
@@ -56,4 +59,14 @@ public class TasksService {
     public void deleteTask(Long id) {
         taskRepository.deleteById(id);
     }
+
+    public Page<Tasks> searchTasks(String search, Pageable pageable) {
+        return taskRepository.findByNameContainingIgnoreCase(search, pageable);
+    }
+
+    public Page<Tasks> searchTasksByUser(Users user, String search, Pageable pageable) {
+        return taskRepository.findByUserAndNameContainingIgnoreCase(user, search, pageable);
+    }
+
+
 }

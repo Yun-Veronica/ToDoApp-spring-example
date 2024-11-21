@@ -76,7 +76,7 @@ public class RegistrationController {
 
         try {
             Files.copy(profilePicture.getInputStream(), path);
-            userForm.setProfilePicturePath("/uploads/" + path.getFileName().toString());
+            userForm.setProfilePicturePath(path.getFileName().toString());
         } catch (IOException e) {
             e.printStackTrace();
             model.addAttribute("uploadError", "Error uploading the profile picture!");

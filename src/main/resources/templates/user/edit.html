@@ -5,6 +5,21 @@
     <title>Title</title>
 </head>
 <body>
+<div class="menu-container">
+    <div class="burger-menu" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+    </div>
+
+    <nav id="nav" class="nav">
+        <ul>
+            <li><a href="/">Main</a></li>
+            <li><a href="/profile">Profile</a></li>
+            <li><a href="/tasks/all">Tasks</a></li>
+        </ul>
+    </nav>
+</div>
 <form action="/profile/edit" method="post" enctype="multipart/form-data" th:object="${user}">
     <input type="text" th:field="*{username}" placeholder="Username" required />
     <input type="email" th:field="*{email}" placeholder="Email" required />
@@ -14,3 +29,4 @@
 
 </body>
 </html>
+

@@ -1,6 +1,5 @@
 package org.example.todo.config;
 
-import jakarta.annotation.PostConstruct;
 import org.example.todo.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -9,7 +8,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 
@@ -28,7 +26,7 @@ public class WebSecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                     .authorizeRequests()
-                    .requestMatchers("/login", "/user/login", "/css/**", "/images/**", "/js/**", "/favicon.ico").permitAll()
+                    .requestMatchers("/registration","/login", "/user/login", "/static/css/**", "/images/**", "/js/**", "/favicon.ico").permitAll()
                     .requestMatchers("/tasks/**").authenticated()  // Allow authenticated users to access /tasks/*
                     .anyRequest().authenticated() // All other requests require authentication
                 .and()
@@ -41,7 +39,7 @@ public class WebSecurityConfig {
                 .and()
                     .logout()
                     .logoutUrl("/logout")  // Configure logout URL
-                    .logoutSuccessUrl("/login?logout")  // Redirect after successful logout
+                    .logoutSuccessUrl("/user/login?logout")  // Redirect after successful logout
                     .permitAll()
                 .and()
                     .csrf().disable();  // Disable CSRF protection (only if necessary)

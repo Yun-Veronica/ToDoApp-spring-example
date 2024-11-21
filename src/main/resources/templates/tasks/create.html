@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+<h2>Create New Task</h2>
+
+<!-- Form to create a task -->
+<form th:action="@{/tasks/create}" th:object="${task}" method="post">
+    <!-- Name -->
+    <div>
+        <label for="name">Task Name</label>
+        <input type="text" id="name" th:field="*{name}" placeholder="Enter task name" required>
+        <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}">Name error</span>
+    </div>
+
+    <!-- Task Text -->
+    <div>
+        <label for="task_text">Task Description</label>
+        <textarea id="task_text" th:field="*{task_text}" placeholder="Enter task description"></textarea>
+        <span th:if="${#fields.hasErrors('task_text')}" th:errors="*{task_text}">Task text error</span>
+    </div>
+
+    <!-- Priority -->
+    <div>
+        <label for="priority">Priority</label>
+        <select id="priority" th:field="*{priority}">
+            <option value="Low">Low</option>
+            <option value="Medium">Medium</option>
+            <option value="High">High</option>
+        </select>
+        <span th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}">Priority error</span>
+    </div>
+
+    <!-- Creation Date -->
+    <div>
+        <label for="creation_date">Creation Date</label>
+        <input type="date" id="creation_date" th:field="*{creation_date}">
+        <span th:if="${#fields.hasErrors('creation_date')}" th:errors="*{creation_date}">Creation date error</span>
+    </div>
+
+    <!-- Due Date -->
+    <div>
+        <label for="due_date">Due Date</label>
+        <input type="date" id="due_date" th:field="*{due_date}">
+        <span th:if="${#fields.hasErrors('due_date')}" th:errors="*{due_date}">Due date error</span>
+    </div>
+
+    <!-- Submit Button -->
+    <div>
+        <button type="submit">Create Task</button>
+    </div>
+</form>
+
+</body>
+</html>
