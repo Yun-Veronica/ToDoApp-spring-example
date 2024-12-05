@@ -3,23 +3,14 @@ package org.example.todo.service;
 import org.example.todo.model.*;
 import org.example.todo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.time.LocalDate;
-import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class TasksService {
@@ -44,7 +35,7 @@ public class TasksService {
 
     @Transactional
     public Tasks saveTask(Tasks task) {
-        if (task.getDue_date() != null && task.getDue_date().isBefore(LocalDate.now())) {
+        if (task.getDueDate() != null && task.getDueDate().isBefore(LocalDate.now())) {
             throw new IllegalArgumentException("Due date cannot be in the past.");
         }
 

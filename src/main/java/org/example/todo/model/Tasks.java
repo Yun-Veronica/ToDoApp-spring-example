@@ -3,7 +3,6 @@ package org.example.todo.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
-
 import java.time.LocalDate;
 
 
@@ -41,9 +40,9 @@ public class Tasks {
     @Column
     private String priority;
 
-    @Column
-    private LocalDate creation_date;
+    @Column(name = "creation_date")
+    private LocalDate creationDate;
 
-    @Column
-    private LocalDate due_date;
+    @Column(name="due_date")
+    private LocalDate dueDate;
 }

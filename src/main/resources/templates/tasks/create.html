@@ -38,16 +38,16 @@
 
     <!-- Creation Date -->
     <div>
-        <label for="creation_date">Creation Date</label>
-        <input type="date" id="creation_date" th:field="*{creation_date}">
-        <span th:if="${#fields.hasErrors('creation_date')}" th:errors="*{creation_date}">Creation date error</span>
+        <label for="creationDate">Creation Date</label>
+        <input type="date" id="creation_date" th:field="*{creationDate}">
+        <span th:if="${#fields.hasErrors('creationDate')}" th:errors="*{getCreationDate}">Creation date error</span>
     </div>
 
     <!-- Due Date -->
     <div>
-        <label for="due_date">Due Date</label>
-        <input type="date" id="due_date" th:field="*{due_date}">
-        <span th:if="${#fields.hasErrors('due_date')}" th:errors="*{due_date}">Due date error</span>
+        <label for="dueDate">Due Date</label>
+        <input type="date" id="dueDate" th:field="*{dueDate}">
+        <span th:if="${#fields.hasErrors('dueDate')}" th:errors="*{getDueDate}">Due date error</span>
     </div>
 
     <!-- Submit Button -->

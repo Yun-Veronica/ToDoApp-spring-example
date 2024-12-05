@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 
 
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,8 @@ import java.util.UUID;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+//TODO : WORK WITH PROFILE
+
 
 @Controller
 @RequestMapping("/profile")
@@ -41,12 +44,23 @@ public class UserProfileController {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    //TODO : WORK WITH PROFILE
-    @GetMapping("/{id}")
-    public String viewProfile(Authentication authentication, Model model) {
-        Users user = (Users) authentication.getPrincipal();
-        model.addAttribute("user", user);
-        return "user/view"; // Template to view user profile
+    @GetMapping("/")
+    public String viewProfile(Model model) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String username = authentication.getName(); // Get the username of the authenticated user
+
+        // Find the current user from the database
+        Users currentUser = userService.findByUsername(username);
+
+        if (currentUser == null) {
+            model.addAttribute("error", "User not found");
+            return "error"; // Handle user not found case
+        }
+
+        // Add the user object to the model
+        model.addAttribute("user", currentUser);
+
+        return "profile/view"; // Return the profile view
     }
 
     @GetMapping("/edit")

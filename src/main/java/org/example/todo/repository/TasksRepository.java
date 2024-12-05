@@ -5,24 +5,39 @@ import org.example.todo.model.Categories;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+//@Repository
+//public interface TasksRepository extends JpaRepository<Tasks, Long> {
+//    List<Tasks> findByUser(Users user);
+//
+//    List<Tasks> findByCategory(Categories category);
+//
+////    List<Tasks> findByUser(Users user, Pageable pageable);
+//    Page<Tasks> findByUser(Users user, Pageable pageable);
+//    Page<Tasks> findByUser(Users user, Pageable pageable, Sort sort);
+//
+//
+//    Page<Tasks> findByNameContainingIgnoreCase(String search, Pageable pageable);
+//
+//    Page<Tasks> findByUserAndNameContainingIgnoreCase(Users user, String search, Pageable pageable) ;
+//
+//
+//}
 @Repository
 public interface TasksRepository extends JpaRepository<Tasks, Long> {
     List<Tasks> findByUser(Users user);
 
     List<Tasks> findByCategory(Categories category);
 
-//    List<Tasks> findByUser(Users user, Pageable pageable);
     Page<Tasks> findByUser(Users user, Pageable pageable);
 
     Page<Tasks> findByNameContainingIgnoreCase(String search, Pageable pageable);
 
-    Page<Tasks> findByUserAndNameContainingIgnoreCase(Users user, String search, Pageable pageable) ;
-
-
+    Page<Tasks> findByUserAndNameContainingIgnoreCase(Users user, String search, Pageable pageable);
 }
