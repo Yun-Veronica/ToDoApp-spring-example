@@ -31,6 +31,7 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private RoleRepository roleRepository;
+
     @Autowired
     private ProfilePictureService profilePictureService;
 
@@ -57,6 +58,7 @@ public class UserService implements UserDetailsService {
     public List<Users> allUsers() {
         return userRepository.findAll();
     }
+
 
     public Users findByUsername(String username) {
         return userRepository.findByUsername(username); // Fetch the user by their username

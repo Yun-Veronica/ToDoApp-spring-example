@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Send Email to User</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>All Tasks</h1>
+    <hr>
+    <div class="menu-container">
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav id="nav" class="nav">
+            <ul>
+                <li><a href="/profile">Profile</a></li>
+                <li><a href="/tasks/all">Tasks</a></li>
+            </ul>
+        </nav>
+    </div>
+    <hr>
+</header>
+<div class="container">
+    <h2>Send Email to User</h2>
+    <form th:action="@{/sendMail}" method="POST">
+        <!-- Email Recipient Dropdown -->
+        <label for="recipient">Select User:</label>
+        <select id="recipient" name="recipientEmail" required>
+            <option th:each="user : ${users}" th:value="${user.email}" th:text="${user.username}">User</option>
+        </select>
+
+        <!-- Subject Input -->
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required/>
+
+        <!-- Message Input -->
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" placeholder="Write your message here" required></textarea>
+
+        <button type="submit">Send Email</button>
+    </form>
+</div>
+</body>
+</html>
