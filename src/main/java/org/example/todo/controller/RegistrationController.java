@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.validation.Valid;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -19,11 +18,10 @@ import java.nio.file.Paths;
 
 @Controller
 public class RegistrationController {
-
     @Autowired
     private UserService userService;
 
-    @Value("${upload.dir}")
+    @Value("${spring.servlet.multipart.location}")
     private String uploadDir;  // Directory to store uploaded pictures
 
     @GetMapping("/registration")

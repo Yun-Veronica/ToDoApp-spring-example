@@ -2,34 +2,37 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Profile</title>
     <link rel="stylesheet" href="/css/style.css">
-
 </head>
-
 <body>
-<div class="menu-container">
-    <div class="burger-menu" onclick="toggleMenu()">
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+<header>
+    <h1>All Tasks</h1>
+    <hr>
+    <div class="menu-container">
+        <div class="burger-menu" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+
+        <nav id="nav" class="nav">
+            <ul>
+                <li><a  href="/profile">Profile</a></li>
+                <li><a href="/tasks/all">Tasks</a></li>
+            </ul>
+        </nav>
     </div>
+    <hr>
+</header>
 
-    <nav id="nav" class="nav">
-        <ul>
-            <li><a href="/profile">Profile</a></li>
-            <li><a href="/tasks/all">Tasks</a></li>
-        </ul>
-    </nav>
+<div class="profile-container">
+    <h2>Profile Information</h2>
+    <p th:text="${user.username}">Username: </p>
+    <p th:text="${user.email}">Email: </p>
+    <p>Profile image: </p>>
+    <img th:src="@{${user.profilePicturePath}}" alt="Profile Picture" width=""/>
+    <br>
+    <a href="/profile/edit">Edit</a>
 </div>
-
-<form action="/profile/edit" method="post" enctype="multipart/form-data" th:object="${user}">
-    <input type="text" th:field="*{username}" placeholder="Username" required/>
-    <input type="email" th:field="*{email}" placeholder="Email" required/>
-    <input type="file" th:field="*{profilePhoto}"/>
-    <button type="submit">Update Profile</button>
-</form>
 </body>
 </html>
-
-

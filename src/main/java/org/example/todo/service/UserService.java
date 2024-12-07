@@ -13,9 +13,12 @@ import org.springframework.transaction.annotation.Transactional;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.io.IOException;
 
 @Service
 public class UserService implements UserDetailsService {
@@ -28,6 +31,8 @@ public class UserService implements UserDetailsService {
 
     @Autowired
     private RoleRepository roleRepository;
+    @Autowired
+    private ProfilePictureService profilePictureService;
 
     @Autowired
     private CategoriesRepository categoryRepository;
@@ -56,6 +61,7 @@ public class UserService implements UserDetailsService {
     public Users findByUsername(String username) {
         return userRepository.findByUsername(username); // Fetch the user by their username
     }
+
     @Transactional
     public boolean saveUser(Users user) {
         Users userFromDB = userRepository.findByUsername(user.getUsername());
@@ -92,5 +98,20 @@ public class UserService implements UserDetailsService {
     public List<Users> usergtList(Long idMin) {
         return em.createQuery("SELECT u FROM Users u WHERE u.id > :paramId", Users.class)
                 .setParameter("paramId", idMin).getResultList();
+    }
+
+    //new for updating profile picture
+    @Transactional
+    public String updateProfilePicture(Long userId, MultipartFile file) throws IOException {
+        Users user = userRepository.findById(userId).orElse(null);
+        if (user == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+
+        user.setProfilePicturePath(user.getProfilePicturePath());
+        userRepository.save(user);
+
+        return "ok";
+
     }
 }

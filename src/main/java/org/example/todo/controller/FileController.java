@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 @Controller
 public class FileController {
 
-    @Value("${upload.dir}")
+    @Value("${spring.servlet.multipart.location}")
     private String uploadDir;
 
     @GetMapping("/uploads/{fileName}")

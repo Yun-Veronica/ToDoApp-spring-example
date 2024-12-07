@@ -5,8 +5,6 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.*;
 import java.time.LocalDate;
 
-
-
 @Entity
 @Table
 @Getter

@@ -17,6 +17,9 @@ public class AdminController {
     private UserService userService;
 
     @Autowired
+    private ProfilePictureService profilePictureService;
+
+    @Autowired
     private TasksService taskService;
 
     @GetMapping("/admin")

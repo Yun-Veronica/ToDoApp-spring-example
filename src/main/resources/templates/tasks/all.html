@@ -1,81 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<!--<head>-->
-<!--    <title>All Tasks</title>-->
-<!--    <link rel="stylesheet" href="/css/style.css">-->
-<!--</head>-->
-<!--<body>-->
-
-<!--<header>-->
-<!--    <h1>All Tasks</h1>-->
-<!--    <hr>-->
-<!--    <div class="menu-container">-->
-<!--        <div class="burger-menu" onclick="toggleMenu()">-->
-<!--            <div class="bar"></div>-->
-<!--            <div class="bar"></div>-->
-<!--            <div class="bar"></div>-->
-<!--        </div>-->
-
-<!--        <nav id="nav" class="nav">-->
-<!--            <ul>-->
-<!--                <li><a href="/profile">Profile</a></li>-->
-<!--                <li><a href="/tasks/all">Tasks</a></li>-->
-<!--            </ul>-->
-<!--        </nav>-->
-<!--    </div>-->
-<!--    <hr>-->
-
-<!--</header>-->
-
-
-<!--<a href="/tasks/create" class="btn">Create Task</a>-->
-<!--<section>-->
-<!--    <form th:action="@{/tasks/all}" method="get">-->
-<!--        <input type="text" name="search" th:value="${search}" placeholder="Search tasks">-->
-<!--        <button type="submit">Search</button>-->
-<!--    </form>-->
-
-<!--    &lt;!&ndash; Display Tasks &ndash;&gt;-->
-<!--    <table>-->
-<!--        <thead>-->
-<!--        <tr>-->
-<!--            <th>Task Name</th>-->
-<!--            <th>Description</th>-->
-<!--            <th>Priority</th>-->
-<!--            <th>Created</th>-->
-<!--            <th>Due</th>-->
-<!--            <th>Actions</th>-->
-<!--        </tr>-->
-<!--        </thead>-->
-<!--        <tbody>-->
-<!--        &lt;!&ndash; Check if tasks are not null and not empty &ndash;&gt;-->
-<!--        <tr th:each="task : ${tasks.content}">-->
-<!--            <td th:text="${task.name}"></td>-->
-<!--            <td th:text="${task.task_text}"></td>-->
-<!--            <td th:text="${task.priority}"></td>-->
-<!--            <td th:text="${task.creation_date}"></td>-->
-<!--            <td th:text="${task.due_date}"></td>-->
-<!--            <td>-->
-<!--                <a th:href="@{/tasks/update/{id}(id=${task.id})}">Edit</a> |-->
-<!--                <a th:href="@{/tasks/delete/{id}(id=${task.id})}" onclick="return confirm('Are you sure?')">Delete</a>-->
-<!--            </td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-
-<!--    &lt;!&ndash; Pagination &ndash;&gt;-->
-<!--    <div class="pagination">-->
-<!--        <a th:href="@{/tasks/all(page=${tasks.number > 0 ? tasks.number - 1 : 0}, search=${search})}" th:if="${tasks.hasPrevious()}">Previous</a>-->
-<!--        <a th:href="@{/tasks/all(page=${tasks.number + 1 < tasks.totalPages ? tasks.number + 1 : tasks.number}, search=${search})}" th:if="${tasks.hasNext()}">Next</a>-->
-<!--    </div>-->
-
-
-<!--    &lt;!&ndash; No tasks message &ndash;&gt;-->
-<!--    <div th:if="${tasks == null or #lists.isEmpty(tasks.content)}">-->
-<!--        <p>No tasks available.</p>-->
-<!--    </div>-->
-<!--</section>-->
-<!--</body>-->
 <head>
     <title>All Tasks</title>
     <link rel="stylesheet" href="/css/style.css">
@@ -94,7 +18,7 @@
 
         <nav id="nav" class="nav">
             <ul>
-                <li><a href="/profile">Profile</a></li>
+                <li><a  href="/profile">Profile</a></li>
                 <li><a href="/tasks/all">Tasks</a></li>
             </ul>
         </nav>
